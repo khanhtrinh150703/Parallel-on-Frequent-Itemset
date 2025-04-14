@@ -16,23 +16,50 @@ khai thác mẫu phổ biến N-List.
 
 ## Cài đặt
 
-### 1. Trên Linux
+### 1. Trên Linux/Windows với Makefile
 
 1. **Cài đặt các phụ thuộc**:
 
-    - Tải và cài đặt [Tên phần mềm] từ [link tải].
-    - Mở **Command Prompt** (hoặc **PowerShell**) và chạy lệnh cài đặt nếu có:
-      ```bash
-        sudo apt update # update hệ thống
-      ```
-      ```bash
-        sudo apt install make # cài đặt make để chạy trên Ubuntu
-      ```
-      ```bash
-        make --version # kiểm tra phiên bản
-        which make # tìm nơi cài đặt
-      ```
+   Để sử dụng `make` trên Windows, bạn cần cài đặt một môi trường hỗ trợ như **MinGW**, **MSYS2**, hoặc **WSL**.
 
+   ### Cách 1: Dùng MSYS2 (Khuyên dùng)
+
+   - Tải và cài đặt MSYS2 tại: [https://www.msys2.org/](https://www.msys2.org/)
+   - Sau khi cài đặt, mở **MSYS2 MSYS** terminal và chạy:
+     ```bash
+     pacman -Syu       # cập nhật hệ thống
+     pacman -S make gcc  # cài đặt make và trình biên dịch g++
+     ```
+   - Kiểm tra cài đặt:
+     ```bash
+     make --version     # kiểm tra phiên bản
+     which make         # tìm đường dẫn make
+     ```
+
+   ### Cách 2: Dùng MinGW
+
+   - Tải MinGW tại: [https://sourceforge.net/projects/mingw/](https://sourceforge.net/projects/mingw/)
+   - Trong quá trình cài đặt, chọn các gói sau:
+     - `mingw32-gcc-g++`
+     - `msys-base`
+     - `mingw32-make`
+   - Sau khi cài xong, thêm đường dẫn MinGW (`bin/`) vào `PATH` trong Environment Variables.
+   - Đổi lệnh `make` thành `mingw32-make` nếu `make` không hoạt động:
+     ```bash
+     mingw32-make --version
+     ```
+
+   ### Cách 3: Dùng WSL (Windows Subsystem for Linux)
+
+   - Mở **Microsoft Store**, tìm và cài **Ubuntu**.
+   - Mở terminal Ubuntu và chạy:
+     ```bash
+     sudo apt update
+     sudo apt install make g++
+     ```
+   - Sau đó bạn có thể dùng lệnh `make` như trên Linux.
+
+                    # Cập nhật hệ thống
 
 2. **Chạy chương trình**:
 
@@ -47,7 +74,7 @@ khai thác mẫu phổ biến N-List.
       make check # kiểm tra các khối trong chương trình trong qua valgrind
       ```
 
-### 2. Trên Window
+### 2. Trên Window không cài Makefile
 
 1. **Chạy chương trình**:
 
@@ -61,7 +88,7 @@ khai thác mẫu phổ biến N-List.
         g++ -std=c++20 -Wall -Iinclude  -c src/main.cpp -o bin/main.o
         g++ -std=c++20 -Wall -Iinclude  -o bin/output bin/NodeN_List.o bin/NodePPC.o bin/PPCTree.o bin/PrePosCount.o bin/ThreadPool.o bin/main.o
         # chạy hết các lện bên trên theo thứ tự cuối
-        bin/output # cuối cùng chỉ việc chạy lệnh này
+        bin/output.exe # cuối cùng chỉ việc chạy lệnh này
       ```
 
 
