@@ -59,7 +59,7 @@ khai thác mẫu phổ biến N-List.
      ```
    - Sau đó bạn có thể dùng lệnh `make` như trên Linux.
 
-                    # Cập nhật hệ thống
+    # Cập nhật hệ thống
 
 2. **Chạy chương trình**:
 
